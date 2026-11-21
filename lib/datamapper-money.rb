@@ -20,11 +20,11 @@ module DataMapper
         name_cents             = "#{name}_cents"
         name_currency          = "#{name}_currency"
 
-        options_cents = options.slice(:required, :precision, :scale).merge(:accessor => :private)
+        options_cents = options.select { |key, _| [:required, :precision, :scale].include?(key) }.merge(:accessor => :private)
         options_cents.merge!(:default => default.cents) if default
         self.property name_cents.to_sym, DataMapper::Property::Decimal, options_cents
 
-        options_currency = options.slice(:required).merge(:accessor => :private, :length => 3)
+        options_currency = options.select { |key, _| key == :required }.merge(:accessor => :private, :length => 3)
         options_currency.merge!(:default => default.currency.to_s) if default
         self.property name_currency.to_sym, DataMapper::Property::String, options_currency
 
@@ -33,7 +33,7 @@ module DataMapper
           def #{name}
             return #{instance_variable_name} if defined?(#{instance_variable_name})
             return unless #{name_cents} && #{name_currency}
-            #{instance_variable_name} = Money.new(#{name_cents}, #{name_currency})
+            #{instance_variable_name} = ::Money.new(#{name_cents}, #{name_currency})
           end
 
           #{property.writer_visibility}
