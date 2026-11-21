@@ -17,6 +17,6 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
   
-  gem.add_dependency 'dm-core', '~> 1.2.0'
-  gem.add_dependency 'money', '~> 5.0.0'
+  gem.add_dependency 'sbf-dm-core', '~> 1.3'
+  gem.add_dependency 'money', '>= 5', '< 8'
 end
