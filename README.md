@@ -2,8 +2,10 @@
 
 Adds a 'money' instance method to DataMapper-based models, for creating properties powered by the 'money' rubygem.
 
-This gem uses the legacy DataMapper 1.2 and Money 5 libraries. Their SQLite
-adapter is not compatible with current Ruby releases; CI tests older Rubies.
+This version uses the `sbf-dm-core` DataMapper fork and Money 7. CI tests Ruby
+3.2 through 4.0 with `sbf-dm-sqlite-adapter`. Applications using the original
+`dm-core` and `dm-sqlite-adapter` gems must migrate to the corresponding `sbf-`
+forks; don't load both implementations in the same application.
 
 ## Installation
 

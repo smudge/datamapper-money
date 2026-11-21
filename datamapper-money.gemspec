@@ -18,5 +18,5 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   
   gem.add_dependency 'sbf-dm-core', '~> 1.3'
-  gem.add_dependency 'money', '>= 5', '< 8'
+  gem.add_dependency 'money', '~> 7.0'
 end
