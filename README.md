@@ -1,4 +1,4 @@
-# datamapper-money
+# datamapper-money [![Test](https://github.com/smudge/datamapper-money/actions/workflows/test.yml/badge.svg)](https://github.com/smudge/datamapper-money/actions/workflows/test.yml) [![RubyGems downloads](https://img.shields.io/gem/dt/datamapper-money.svg)](https://rubygems.org/gems/datamapper-money)
 
 Adds a 'money' instance method to DataMapper-based models, for creating properties powered by the 'money' rubygem.
 
@@ -18,7 +18,23 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require 'datamapper-money'
+
+class Product
+  include DataMapper::Resource
+
+  property :id, Serial
+  money :price
+end
+
+product = Product.new
+product.price = Money.new(1234, 'USD')
+product.price.cents # => 1234
+```
+
+The `money` property stores its value in `price_cents` and `price_currency`
+fields. Configure a DataMapper repository before creating or loading models.
 
 ## Contributing
 
