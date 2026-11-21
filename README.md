@@ -2,6 +2,9 @@
 
 Adds a 'money' instance method to DataMapper-based models, for creating properties powered by the 'money' rubygem.
 
+This gem uses the legacy DataMapper 1.2 and Money 5 libraries. Their SQLite
+adapter is not compatible with current Ruby releases; CI tests older Rubies.
+
 ## Installation
 
 Add this line to your application's Gemfile:
